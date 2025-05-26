@@ -1,7 +1,11 @@
 import React from "react";
 import Card from "./Card";
 
-export default function Cards() {
+type props = {
+  onCardClick: () => void;
+};
+
+export default function Cards({ onCardClick }: props) {
   const cardCount: number = 8;
   const cards: React.ReactNode[] = [];
 
@@ -11,7 +15,7 @@ export default function Cards() {
         id={`${i + 1}`}
         key={crypto.randomUUID()}
         text={`I am Number ${i + 1}`}
-        onClick={console.log("Test passed!")}
+        onClick={() => onCardClick()}
       />
     );
   }

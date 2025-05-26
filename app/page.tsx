@@ -9,10 +9,14 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
+  const handleCardClick = () => {
+    console.log("Test passed");
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <Header level={level} score={score} highscore={highscore} />
-      <Cards />
+      <Cards onCardClick={() => handleCardClick()} />
     </div>
   );
 }
