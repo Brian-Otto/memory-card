@@ -10,15 +10,15 @@ export default function Header() {
       </div>
       <div className="flex flex-col text-right gap-2 textbox">
         <div className="flex justify-between">
-          <p>Current Level:</p>
+          <p>CURRENT LEVEL:</p>
           <p className="w-20">1</p>
         </div>
         <div className="flex justify-between">
-          <p>Current Score:</p>
+          <p>CURRENT SCORE:</p>
           <p>0</p>
         </div>
         <div className="flex justify-between">
-          <p>Your Highscore:</p>
+          <p>YOUR HIGHSCORE:</p>
           <p>0</p>
         </div>
       </div>
