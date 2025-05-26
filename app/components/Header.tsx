@@ -9,9 +9,18 @@ export default function Header() {
         </p>
       </div>
       <div className="flex flex-col text-right gap-2 textbox">
-        <p>Current Level: 1</p>
-        <p>Current Score: 0</p>
-        <p>Your Highscore: 0</p>
+        <div className="flex justify-between">
+          <p>Current Level:</p>
+          <p className="w-20">1</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Current Score:</p>
+          <p>0</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Your Highscore:</p>
+          <p>0</p>
+        </div>
       </div>
     </div>
   );
