@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Card() {
+export default function Card({ text = "defaultText" }) {
   return (
     <div className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4">
       <Image
@@ -10,7 +10,7 @@ export default function Card() {
         height="250"
         className="border border-white-500"
       />
-      <p className="text-xl">The placeholder</p>
+      <p className="text-xl">{text}</p>
     </div>
   );
 }
