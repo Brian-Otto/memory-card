@@ -41,6 +41,6 @@ body {
 }
 
 .textbox {
-  @apply border border-double border-10 rounded-xl p-4 pt-8;
+  @apply border border-double border-10 rounded-xl p-3 pt-6;
   border-color: var(--foreground);
 }
