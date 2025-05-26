@@ -3,6 +3,7 @@
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { useState } from "react";
+import { getRandomizedStringArray } from "./lib/utils";
 
 export default function Home() {
   const [level, setLevel] = useState(1);
