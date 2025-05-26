@@ -1,4 +1,10 @@
-export default function Header() {
+type props = {
+  level: number;
+  score: number;
+  highscore: number;
+};
+
+export default function Header({ level, score, highscore }: props) {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col gap-4 textbox">
@@ -11,15 +17,15 @@ export default function Header() {
       <div className="flex flex-col text-right gap-2 textbox">
         <div className="flex justify-between">
           <p>CURRENT LEVEL:</p>
-          <p className="w-20">1</p>
+          <p className="w-20">{level}</p>
         </div>
         <div className="flex justify-between">
           <p>CURRENT SCORE:</p>
-          <p>0</p>
+          <p>{score}</p>
         </div>
         <div className="flex justify-between">
           <p>YOUR HIGHSCORE:</p>
-          <p>0</p>
+          <p>{highscore}</p>
         </div>
       </div>
     </div>
