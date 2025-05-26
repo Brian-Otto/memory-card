@@ -39,3 +39,8 @@ body {
   color: var(--foreground);
   font-family: "pkmn_rbygscregular", Arial, Helvetica, sans-serif;
 }
+
+.textbox {
+  @apply border border-double border-10 rounded-xl p-4 pt-8;
+  border-color: var(--foreground);
+}
