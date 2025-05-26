@@ -12,6 +12,21 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
+https://www.dafont.com/pkmn-rbygsc.font
+©GAME FREAK
+©FontStruct
+https://www.fontsquirrel.com/tools/webfont-generator
+*/
+
+@font-face {
+  font-family: "pkmn_rbygscregular";
+  src: url("font/pkmn_rbygsc-webfont.woff2") format("woff2"),
+    url("font/pkmn_rbygsc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -22,5 +37,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "pkmn_rbygscregular", Arial, Helvetica, sans-serif;
 }
