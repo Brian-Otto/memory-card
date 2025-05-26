@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 
 type props = {
-  onCardClick: () => void;
+  onCardClick: (id: string) => void;
 };
 
 export default function Cards({ onCardClick }: props) {
@@ -15,7 +15,7 @@ export default function Cards({ onCardClick }: props) {
         id={`${i + 1}`}
         key={crypto.randomUUID()}
         text={`I am Number ${i + 1}`}
-        onClick={() => onCardClick()}
+        onClick={(id) => onCardClick(id)}
       />
     );
   }

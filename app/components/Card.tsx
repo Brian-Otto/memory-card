@@ -3,14 +3,14 @@ import Image from "next/image";
 type props = {
   id: string;
   text: string;
-  onClick?: () => void;
+  onClick: (id: string) => void;
 };
 
-export default function Card({ text, onClick }: props) {
+export default function Card({ id, text, onClick }: props) {
   return (
     <div
       className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4"
-      onClick={onClick}
+      onClick={() => onClick(id)}
     >
       <Image
         src="/image.png"
