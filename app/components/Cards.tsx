@@ -7,7 +7,12 @@ export default function Cards() {
 
   for (let i = 0; i < cardCount; i++) {
     cards.push(
-      <Card key={crypto.randomUUID()} text={`I am Number ${i + 1}`} />
+      <Card
+        id={`${i + 1}`}
+        key={crypto.randomUUID()}
+        text={`I am Number ${i + 1}`}
+        onClick={console.log("Test passed!")}
+      />
     );
   }
   return <div className="flex flex-wrap gap-8">{cards}</div>;

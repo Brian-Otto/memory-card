@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { useState } from "react";

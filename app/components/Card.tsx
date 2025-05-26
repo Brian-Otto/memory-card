@@ -1,8 +1,17 @@
 import Image from "next/image";
 
-export default function Card({ text = "defaultText" }) {
+type props = {
+  id: string;
+  text: string;
+  onClick?: () => void;
+};
+
+export default function Card({ text, onClick }: props) {
   return (
-    <div className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4">
+    <div
+      className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4"
+      onClick={onClick}
+    >
       <Image
         src="/image.png"
         alt="placeholder image"
