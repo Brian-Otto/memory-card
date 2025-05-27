@@ -1,16 +1,15 @@
 import Image from "next/image";
 
 type props = {
-  id: string;
   text: string;
-  onClick: (id: string) => void;
+  onClick: () => void;
 };
 
-export default function Card({ id, text, onClick }: props) {
+export default function Card({ text, onClick }: props) {
   return (
     <div
       className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4"
-      onClick={() => onClick(id)}
+      onClick={onClick}
     >
       <Image
         src="/image.png"
