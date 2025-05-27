@@ -8,7 +8,7 @@ type props = {
 export default function Card({ text, onClick }: props) {
   return (
     <div
-      className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4"
+      className="flex flex-col text-center w-fit border border-white-500 p-4 gap-4 hover:cursor-pointer select-none hover:ring-4 ring-foreground"
       onClick={onClick}
     >
       <Image
