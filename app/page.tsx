@@ -2,7 +2,7 @@
 
 import Header from "./components/Header";
 import Cards from "./components/Cards";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getRandomizedPokemonArray } from "./lib/utils";
 import { getTestPokemon } from "./lib/data";
 import Pokemon from "./lib/Pokemon";
@@ -25,6 +25,17 @@ export default function Home() {
     }
     setPokemons((prev) => getRandomizedPokemonArray(prev));
   };
+
+  useEffect(() => {
+    const storedHighscore: number = parseInt(
+      localStorage.getItem("highscore") || "0"
+    );
+    setHighscore(storedHighscore);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("highscore", highscore.toString());
+  }, [highscore]);
 
   return (
     <div className="flex flex-col gap-4">
