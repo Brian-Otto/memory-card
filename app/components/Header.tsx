@@ -16,7 +16,10 @@ export default function Header({
   return (
     <div className="flex justify-between">
       <div className="flex flex-col gap-4 textbox">
-        <h1 className="text-4xl">Pokemon Memory Game</h1>
+        <h1 className="text-4xl">
+          <span className="text-yellow-500 logo-outline">Pokémon</span> Memory
+          Game
+        </h1>
         <p>
           Get points by clicking on a Card, but don't click on any more than
           once!

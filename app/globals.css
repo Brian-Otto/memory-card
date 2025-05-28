@@ -44,3 +44,11 @@ body {
   @apply border border-double border-10 rounded-xl p-3 pt-6;
   border-color: var(--foreground);
 }
+
+.logo-outline {
+  --outline-color: #3367af;
+  text-shadow: -2px -2px 0 var(--outline-color), 2px -2px 0 var(--outline-color),
+    -2px 2px 0 var(--outline-color), 2px 2px 0 var(--outline-color),
+    -3px 0px 0 var(--outline-color), 3px 0px 0 var(--outline-color),
+    0px -3px 0 var(--outline-color), 0px 3px 0 var(--outline-color);
+}
