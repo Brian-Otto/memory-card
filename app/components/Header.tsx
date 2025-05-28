@@ -16,16 +16,16 @@ export default function Header({ level, score, highscore }: props) {
       </div>
       <div className="flex flex-col text-right gap-2 textbox">
         <div className="flex justify-between">
-          <p>CURRENT LEVEL:</p>
+          <p>LEVEL:</p>
           <p className="w-20">{level}</p>
         </div>
         <div className="flex justify-between">
-          <p>CURRENT SCORE:</p>
-          <p>{score}</p>
+          <p>SCORE:</p>
+          <p className="w-20">{score}</p>
         </div>
         <div className="flex justify-between">
-          <p>YOUR HIGHSCORE:</p>
-          <p>{highscore}</p>
+          <p>HIGHSCORE:</p>
+          <p className="w-20">{highscore}</p>
         </div>
       </div>
     </div>
