@@ -10,10 +10,11 @@ import { useLocalStorage } from "usehooks-ts";
 export default function Home() {
   // waiting with rendering until client-side is ready
   const [isClient, setIsClient] = useState(false);
-
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const initialCardAmount = 6;
 
   const [level, setLevel] = useLocalStorage("level", 1);
   const [score, setScore] = useLocalStorage("score", 0);
@@ -25,6 +26,9 @@ export default function Home() {
   const [pokemons, setPokemons] = useLocalStorage("pokemon", () =>
     getRandomizedArray(getTestPokemon(initialCardAmount))
   );
+
+  const currentlyDisplayedCardAmount = initialCardAmount * level;
+  const scoreNeededForLevelup = currentlyDisplayedCardAmount;
 
   if (!isClient) return null;
 
