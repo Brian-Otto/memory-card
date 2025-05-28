@@ -62,7 +62,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Header level={level} score={score} highscore={highscore} />
+      <Header
+        level={level}
+        score={score}
+        highscore={highscore}
+        filledPercentage={(exp / expNeededForLevelup) * 100}
+      />
       <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
     </div>
   );
