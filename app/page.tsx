@@ -8,6 +8,7 @@ import { getTestPokemon } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
 
 export default function Home() {
+  // waiting with rendering until client-side is ready
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
