@@ -16,6 +16,7 @@ export default function Home() {
 
   const initialCardAmount = 6;
 
+  const [exp, setExp] = useLocalStorage("exp", 0);
   const [level, setLevel] = useLocalStorage("level", 1);
   const [score, setScore] = useLocalStorage("score", 0);
   const [highscore, setHighscore] = useLocalStorage("highscore", 0);
@@ -27,21 +28,36 @@ export default function Home() {
     getRandomizedArray(getTestPokemon(initialCardAmount))
   );
 
-  const currentlyDisplayedCardAmount = initialCardAmount * level;
-  const scoreNeededForLevelup = currentlyDisplayedCardAmount;
+  const expNeededForLevelup = initialCardAmount * level;
 
   if (!isClient) return null;
 
   const handleCardClick = (id: string) => {
-    if (!clickedCardIds.includes(id)) {
-      setScore((prev) => prev + 1);
-      setClickedCardIds((prev) => [...prev, id]);
+    const userScored = !clickedCardIds.includes(id);
+    const newScore = userScored ? score + 1 : 0;
+    let newExp = userScored ? exp + 1 : 0;
+    let newPokemons = pokemons;
+    let newClickedCards = userScored ? [...clickedCardIds, id] : [];
+
+    if (userScored) {
+      // Levelup
+      if (newExp === expNeededForLevelup) {
+        const newLevel = level + 1;
+        setLevel(newLevel);
+        newExp = 0;
+        newPokemons = getTestPokemon(newLevel * initialCardAmount);
+        newClickedCards = [];
+      }
     } else {
-      setHighscore(highscore < score ? score : highscore);
-      setScore(0);
-      setClickedCardIds([]);
+      setLevel(1);
+      setHighscore(highscore > score ? highscore : score);
+      newPokemons = getTestPokemon(initialCardAmount);
     }
-    setPokemons((prev) => getRandomizedArray(prev));
+
+    setClickedCardIds([...newClickedCards]);
+    setScore(newScore);
+    setExp(newExp);
+    setPokemons(getRandomizedArray([...newPokemons]));
   };
 
   return (
