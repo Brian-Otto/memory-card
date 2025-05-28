@@ -23,7 +23,7 @@ export default function Home() {
     []
   );
   const [pokemons, setPokemons] = useLocalStorage("pokemon", () =>
-    getTestPokemon(8)
+    getRandomizedArray(getTestPokemon(initialCardAmount))
   );
 
   if (!isClient) return null;
