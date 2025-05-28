@@ -1,10 +1,8 @@
-import Pokemon from "./Pokemon";
-
-const getRandomizedPokemonArray = (array: Pokemon[]): Pokemon[] => {
+const getRandomizedArray = <T>(array: T[]): T[] => {
   return array
     .map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
 };
 
-export { getRandomizedPokemonArray };
+export { getRandomizedArray };
