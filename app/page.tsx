@@ -5,14 +5,27 @@ import Cards from "./components/Cards";
 import { useEffect, useState } from "react";
 import { getRandomizedPokemonArray } from "./lib/utils";
 import { getTestPokemon } from "./lib/data";
-import Pokemon from "./lib/Pokemon";
+import { useLocalStorage } from "usehooks-ts";
 
 export default function Home() {
-  const [level, setLevel] = useState(1);
-  const [score, setScore] = useState(0);
-  const [highscore, setHighscore] = useState(0);
-  const [clickedCardIds, setClickedCardIds] = useState<string[]>([]);
-  const [pokemons, setPokemons] = useState<Pokemon[]>(() => getTestPokemon(8));
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const [level, setLevel] = useLocalStorage("level", 1);
+  const [score, setScore] = useLocalStorage("score", 0);
+  const [highscore, setHighscore] = useLocalStorage("highscore", 0);
+  const [clickedCardIds, setClickedCardIds] = useLocalStorage<string[]>(
+    "clickedCardIds",
+    []
+  );
+  const [pokemons, setPokemons] = useLocalStorage("pokemon", () =>
+    getTestPokemon(8)
+  );
+
+  if (!isClient) return null;
 
   const handleCardClick = (id: string) => {
     if (!clickedCardIds.includes(id)) {
@@ -25,17 +38,6 @@ export default function Home() {
     }
     setPokemons((prev) => getRandomizedPokemonArray(prev));
   };
-
-  useEffect(() => {
-    const storedHighscore: number = parseInt(
-      localStorage.getItem("highscore") || "0"
-    );
-    setHighscore(storedHighscore);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("highscore", highscore.toString());
-  }, [highscore]);
 
   return (
     <div className="flex flex-col gap-4">
