@@ -3,7 +3,7 @@
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { useEffect, useState } from "react";
-import { getRandomizedPokemonArray } from "./lib/utils";
+import { getRandomizedArray } from "./lib/utils";
 import { getTestPokemon } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
 
@@ -36,7 +36,7 @@ export default function Home() {
       setScore(0);
       setClickedCardIds([]);
     }
-    setPokemons((prev) => getRandomizedPokemonArray(prev));
+    setPokemons((prev) => getRandomizedArray(prev));
   };
 
   return (
