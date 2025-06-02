@@ -7,7 +7,11 @@ const getPokemons = async (quantity: number) => {
     const dexNum = i + 1;
     const fetchedPokemon = await fetchPokemon(dexNum);
     const id = await fetchedPokemon.id;
-    const name = await fetchedPokemon.name;
+    const lowercaseName: string = await fetchedPokemon.name;
+    const name = lowercaseName
+      .charAt(0)
+      .toUpperCase()
+      .concat(lowercaseName.slice(1));
     const imgUrl = await fetchedPokemon.sprites.versions["generation-i"][
       "red-blue"
     ].front_default;
