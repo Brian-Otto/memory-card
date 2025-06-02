@@ -1,18 +1,25 @@
 import Pokemon from "./Pokemon";
 
-const getTestPokemon = (quantity: number) => {
+const getPokemons = async (quantity: number) => {
   const pokemons = [];
 
   for (let i = 0; i < quantity; i++) {
-    const count = i + 1;
-    pokemons.push(new Pokemon(count.toString(), `Number ${count}`));
+    const dexNum = i + 1;
+    const fetchedPokemon = await fetchPokemon(dexNum);
+    const id = await fetchedPokemon.id;
+    const name = await fetchedPokemon.name;
+    const imgUrl = await fetchedPokemon.sprites.versions["generation-i"][
+      "red-blue"
+    ].front_default;
+    pokemons.push(new Pokemon(id, name, imgUrl));
   }
 
   return pokemons;
 };
 
-const getPokemon = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon/1";
+const fetchPokemon = async (pokedexNum: number) => {
+  // only give an argument from 1-151 here, first generation pokedex
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokedexNum}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -24,12 +31,15 @@ const getPokemon = async () => {
     console.log(
       "The pokemon is " +
         json.name +
+        " with Pokedex number " +
+        json.id +
         ". Look it up here: " +
-        json.sprites.versions["generation-i"].yellow.front_default
+        json.sprites.versions["generation-i"]["red-blue"].front_default
     );
+    return json;
   } catch (e) {
     console.log((e as Error).message);
   }
 };
 
-export { getTestPokemon, getPokemon };
+export { fetchPokemon, getPokemons };

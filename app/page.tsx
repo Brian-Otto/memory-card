@@ -4,8 +4,9 @@ import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { useEffect, useState } from "react";
 import { getRandomizedArray } from "./lib/utils";
-import { getTestPokemon } from "./lib/data";
+import { getPokemons } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
+import Pokemon from "./lib/Pokemon";
 
 export default function Home() {
   // waiting with rendering until client-side is ready
@@ -25,14 +26,22 @@ export default function Home() {
     []
   );
   const [pokemons, setPokemons] = useLocalStorage("pokemon", () =>
-    getRandomizedArray(getTestPokemon(initialCardAmount))
+    getRandomizedArray<Pokemon>([])
   );
+
+  useEffect(() => {
+    const setFetchedPokemons = async (count: number) => {
+      const newPokemons = await getPokemons(count);
+      setPokemons(newPokemons);
+    };
+    setFetchedPokemons(6);
+  }, []);
 
   const expNeededForLevelup = initialCardAmount * level;
 
   if (!isClient) return null;
 
-  const handleCardClick = (id: string) => {
+  const handleCardClick = async (id: string) => {
     const userScored = !clickedCardIds.includes(id);
     const newScore = userScored ? score + 1 : 0;
     let newExp = userScored ? exp + 1 : 0;
@@ -45,13 +54,13 @@ export default function Home() {
         const newLevel = level + 1;
         setLevel(newLevel);
         newExp = 0;
-        newPokemons = getTestPokemon(newLevel * initialCardAmount);
+        newPokemons = await getPokemons(newLevel * initialCardAmount);
         newClickedCards = [];
       }
     } else {
       setLevel(1);
       setHighscore(highscore > score ? highscore : score);
-      newPokemons = getTestPokemon(initialCardAmount);
+      newPokemons = await getPokemons(initialCardAmount);
     }
 
     setClickedCardIds([...newClickedCards]);
