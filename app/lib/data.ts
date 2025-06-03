@@ -10,7 +10,7 @@ const getPokemons = async (quantity: number) => {
     const dexNum = Math.floor(Math.random() * (to - from + 1)) + from;
 
     if (alreadySelected.includes(dexNum)) {
-      i += 1;
+      i -= 1;
       continue;
     }
 
