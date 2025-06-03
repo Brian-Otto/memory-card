@@ -14,7 +14,7 @@ export default function Card({ text, imgUrl, onClick }: props) {
     >
       <img
         src={imgUrl}
-        alt="placeholder image"
+        alt={`image of ${text}`}
         width="250"
         height="250"
         className="border border-white-500"
