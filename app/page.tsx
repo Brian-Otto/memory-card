@@ -7,12 +7,14 @@ import { getRandomizedArray } from "./lib/utils";
 import { getPokemons } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
 import Pokemon from "./lib/Pokemon";
+import Loading from "./Loading";
 
 export default function Home() {
   // waiting with rendering until client-side is ready
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
+    setIsLoading(false);
   }, []);
 
   const initialCardAmount = 6;
@@ -28,12 +30,20 @@ export default function Home() {
   const [pokemons, setPokemons] = useLocalStorage("pokemon", () =>
     getRandomizedArray<Pokemon>([])
   );
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getPokemonsLoadingWrapper = async (count: number) => {
+    setIsLoading(true);
+    const newPokemons = await getPokemons(count);
+    setIsLoading(false);
+    return newPokemons;
+  };
 
   // on fresh visit on site load initial cards
   useEffect(() => {
     if (localStorage.getItem("pokemons") === null) {
       const setFetchedPokemons = async (count: number) => {
-        const newPokemons = await getPokemons(count);
+        const newPokemons = await getPokemonsLoadingWrapper(count);
         setPokemons(newPokemons);
       };
       setFetchedPokemons(6);
@@ -58,14 +68,16 @@ export default function Home() {
         const newLevel = level + 1;
         setLevel(newLevel);
         newExp = 0;
-        newPokemons = await getPokemons(newLevel * initialCardAmount);
+        newPokemons = await getPokemonsLoadingWrapper(
+          newLevel * initialCardAmount
+        );
         newClickedCards = [];
       }
     } else {
       // if player loses
       setLevel(1);
       setHighscore(highscore > score ? highscore : score);
-      newPokemons = await getPokemons(initialCardAmount);
+      newPokemons = await getPokemonsLoadingWrapper(initialCardAmount);
     }
 
     setClickedCardIds([...newClickedCards]);
@@ -82,7 +94,11 @@ export default function Home() {
         highscore={highscore}
         filledPercentage={(exp / expNeededForLevelup) * 100}
       />
-      <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
+      {!isLoading ? (
+        <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }
