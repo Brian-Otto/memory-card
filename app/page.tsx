@@ -27,7 +27,7 @@ export default function Home() {
     "clickedCardIds",
     []
   );
-  const [pokemons, setPokemons] = useLocalStorage("pokemon", () =>
+  const [pokemons, setPokemons] = useLocalStorage("pokemons", () =>
     getRandomizedArray<Pokemon>([])
   );
   const [isLoading, setIsLoading] = useState(true);
