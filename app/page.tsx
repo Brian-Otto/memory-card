@@ -30,7 +30,7 @@ export default function Home() {
   );
 
   useEffect(() => {
-    if (localStorage.getItem("pokemons") === undefined) {
+    if (localStorage.getItem("pokemons") === null) {
       const setFetchedPokemons = async (count: number) => {
         const newPokemons = await getPokemons(count);
         setPokemons(newPokemons);
