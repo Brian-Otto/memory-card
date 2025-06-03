@@ -12,9 +12,7 @@ const getPokemons = async (quantity: number) => {
       .charAt(0)
       .toUpperCase()
       .concat(lowercaseName.slice(1));
-    const imgUrl = await fetchedPokemon.sprites.versions["generation-i"][
-      "red-blue"
-    ].front_default;
+    const imgUrl = await fetchedPokemon.sprites.front_default;
     pokemons.push(new Pokemon(id, name, imgUrl));
   }
 
@@ -22,7 +20,6 @@ const getPokemons = async (quantity: number) => {
 };
 
 const fetchPokemon = async (pokedexNum: number) => {
-  // only give an argument from 1-151 here, first generation pokedex
   const url = `https://pokeapi.co/api/v2/pokemon/${pokedexNum}`;
   try {
     const response = await fetch(url);
@@ -31,15 +28,6 @@ const fetchPokemon = async (pokedexNum: number) => {
     }
 
     const json = await response.json();
-    console.log(json);
-    console.log(
-      "The pokemon is " +
-        json.name +
-        " with Pokedex number " +
-        json.id +
-        ". Look it up here: " +
-        json.sprites.versions["generation-i"]["red-blue"].front_default
-    );
     return json;
   } catch (e) {
     console.log((e as Error).message);
