@@ -13,6 +13,7 @@ export default function Cards({ pokemons, onCardClick }: props) {
       <Card
         key={pokemon.id}
         text={pokemon.name}
+        imgUrl={pokemon.imageUrl}
         onClick={() => onCardClick(pokemon.id)}
       />
     );
