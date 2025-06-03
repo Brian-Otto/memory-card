@@ -30,11 +30,13 @@ export default function Home() {
   );
 
   useEffect(() => {
-    const setFetchedPokemons = async (count: number) => {
-      const newPokemons = await getPokemons(count);
-      setPokemons(newPokemons);
-    };
-    setFetchedPokemons(6);
+    if (localStorage.getItem("pokemons") === undefined) {
+      const setFetchedPokemons = async (count: number) => {
+        const newPokemons = await getPokemons(count);
+        setPokemons(newPokemons);
+      };
+      setFetchedPokemons(6);
+    }
   }, []);
 
   const expNeededForLevelup = initialCardAmount * level;
