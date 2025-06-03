@@ -48,7 +48,7 @@ export default function Home() {
       };
       setFetchedPokemons(6);
     }
-  }, []);
+  }, [setPokemons]);
 
   const expNeededForLevelup = initialCardAmount * level;
 
