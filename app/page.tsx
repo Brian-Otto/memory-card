@@ -29,6 +29,7 @@ export default function Home() {
     getRandomizedArray<Pokemon>([])
   );
 
+  // on fresh visit on site load initial cards
   useEffect(() => {
     if (localStorage.getItem("pokemons") === null) {
       const setFetchedPokemons = async (count: number) => {
@@ -41,6 +42,7 @@ export default function Home() {
 
   const expNeededForLevelup = initialCardAmount * level;
 
+  // waiting with rendering until client-side is ready
   if (!isClient) return null;
 
   const handleCardClick = async (id: string) => {
@@ -60,6 +62,7 @@ export default function Home() {
         newClickedCards = [];
       }
     } else {
+      // if player loses
       setLevel(1);
       setHighscore(highscore > score ? highscore : score);
       newPokemons = await getPokemons(initialCardAmount);
