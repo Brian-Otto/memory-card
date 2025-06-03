@@ -21,8 +21,8 @@ export default function Header({
           Game
         </h1>
         <p>
-          Get points by clicking on a Card, but don't click on any more than
-          once!
+          Get points by clicking on a Card, but don&apos;t click on any more
+          than once!
         </p>
       </div>
       <div className="flex flex-col justify-evenly text-right gap-2 textbox">
