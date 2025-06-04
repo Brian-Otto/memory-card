@@ -45,6 +45,10 @@ body {
   border-color: var(--foreground);
 }
 
+.clickable {
+  @apply border-2 border-foreground hover:cursor-pointer select-none hover:ring-4 ring-foreground;
+}
+
 .logo-outline {
   --outline-color: #3367af;
   text-shadow: -2px -2px 0 var(--outline-color), 2px -2px 0 var(--outline-color),
