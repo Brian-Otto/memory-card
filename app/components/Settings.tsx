@@ -17,7 +17,11 @@ export default function Settings({ onResetClick }: props) {
       />
       {settingsShown && (
         <div className="absolute top-full bg-background textbox mt-2">
-          <button type="button" onClick={onResetClick}>
+          <button
+            type="button"
+            onClick={onResetClick}
+            className="clickable p-4"
+          >
             Reset
           </button>
         </div>
