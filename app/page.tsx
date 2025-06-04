@@ -73,17 +73,22 @@ export default function Home() {
         );
         newClickedCards = [];
       }
+      setPokemons(getRandomizedArray([...newPokemons]));
     } else {
       // if player loses
-      setLevel(1);
-      setHighscore(highscore > score ? highscore : score);
-      newPokemons = await getPokemonsLoadingWrapper(initialCardAmount);
+      reset();
     }
 
     setClickedCardIds([...newClickedCards]);
     setScore(newScore);
     setExp(newExp);
-    setPokemons(getRandomizedArray([...newPokemons]));
+  };
+
+  const reset = async () => {
+    setLevel(1);
+    setHighscore(highscore > score ? highscore : score);
+    const newPokemons = await getPokemonsLoadingWrapper(initialCardAmount);
+    setPokemons(newPokemons);
   };
 
   return (
