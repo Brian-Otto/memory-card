@@ -8,6 +8,7 @@ import { getPokemons } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
 import Pokemon from "./lib/Pokemon";
 import Loading from "./Loading";
+import Menu from "./components/Menu";
 
 export default function Home() {
   // waiting with rendering until client-side is ready
@@ -99,6 +100,8 @@ export default function Home() {
         highscore={highscore}
         filledPercentage={(exp / expNeededForLevelup) * 100}
       />
+      <Menu onReset={reset} />
+
       {!isLoading ? (
         <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
       ) : (
