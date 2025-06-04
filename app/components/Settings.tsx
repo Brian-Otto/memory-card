@@ -12,7 +12,7 @@ export default function Settings({ onResetClick }: props) {
   return (
     <div className="inline relative">
       <SettingsIcon
-        className="w-12 h-12"
+        className="w-16 h-16 clickable p-3"
         onClick={() => setSettingsShown(!settingsShown)}
       />
       {settingsShown && (
