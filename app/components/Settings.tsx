@@ -3,7 +3,11 @@
 import { useState } from "react";
 import SettingsIcon from "./SettingsIcon";
 
-export default function Settings() {
+type props = {
+  onResetClick: () => void;
+};
+
+export default function Settings({ onResetClick }: props) {
   const [settingsShown, setSettingsShown] = useState(false);
   return (
     <div className="inline relative">
@@ -12,7 +16,11 @@ export default function Settings() {
         onClick={() => setSettingsShown(!settingsShown)}
       />
       {settingsShown && (
-        <div className="absolute top-full bg-background textbox mt-2">test</div>
+        <div className="absolute top-full bg-background textbox mt-2">
+          <button type="button" onClick={onResetClick}>
+            Reset
+          </button>
+        </div>
       )}
     </div>
   );
