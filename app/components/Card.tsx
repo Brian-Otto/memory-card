@@ -9,7 +9,7 @@ type props = {
 export default function Card({ text, imgUrl, onClick }: props) {
   return (
     <div
-      className="flex flex-col text-center w-fit border border-foreground p-4 gap-4 hover:cursor-pointer select-none hover:ring-4 ring-foreground"
+      className="flex flex-col text-center w-fit p-4 gap-4 clickable"
       onClick={onClick}
     >
       <Image
@@ -17,7 +17,6 @@ export default function Card({ text, imgUrl, onClick }: props) {
         alt={`image of ${text}`}
         width="250"
         height="250"
-        className="border border-foreground"
         unoptimized
       />
       <p className="text-xl">{text}</p>
