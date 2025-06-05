@@ -50,7 +50,7 @@ body {
 }
 
 .menu-icon-size {
-  @apply w-16 h-16;
+  @apply w-16 h-16 p-3;
 }
 
 .logo-outline {

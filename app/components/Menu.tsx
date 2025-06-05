@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Settings from "./Settings";
 import CloseIcon from "./CloseIcon";
+import ThemeToggle from "./ThemeToggle";
 
 type props = {
   onReset: () => void;
@@ -16,9 +17,10 @@ export default function Menu({ onReset }: props) {
       {menuShown ? (
         <div className="textbox flex w-min gap-4">
           <button type="button" onClick={() => setMenuShown(false)}>
-            <CloseIcon className="menu-icon-size p-1 clickable" />
+            <CloseIcon className="menu-icon-size clickable" />
           </button>
           <Settings onResetClick={onReset} />
+          <ThemeToggle />
         </div>
       ) : (
         <button
