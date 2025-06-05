@@ -49,6 +49,10 @@ body {
   @apply border-2 border-foreground hover:cursor-pointer select-none hover:ring-4 ring-foreground;
 }
 
+.menu-icon-size {
+  @apply w-16 h-16;
+}
+
 .logo-outline {
   --outline-color: #3367af;
   text-shadow: -2px -2px 0 var(--outline-color), 2px -2px 0 var(--outline-color),

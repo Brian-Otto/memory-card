@@ -12,7 +12,7 @@ export default function Settings({ onResetClick }: props) {
   return (
     <div className="relative flex items-center">
       <SettingsIcon
-        className="w-16 h-16 clickable p-3"
+        className="menu-icon-size clickable p-3"
         onClick={() => setSettingsShown(!settingsShown)}
       />
       {settingsShown && (
