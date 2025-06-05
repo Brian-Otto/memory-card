@@ -10,7 +10,7 @@ type props = {
 export default function Settings({ onResetClick }: props) {
   const [settingsShown, setSettingsShown] = useState(false);
   return (
-    <div className="inline relative">
+    <div className="relative flex items-center">
       <SettingsIcon
         className="w-16 h-16 clickable p-3"
         onClick={() => setSettingsShown(!settingsShown)}
