@@ -5,4 +5,10 @@ const getRandomizedArray = <T>(array: T[]): T[] => {
     .map(({ value }) => value);
 };
 
-export { getRandomizedArray };
+const getDefaultPreferredColorScheme = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+export { getRandomizedArray, getDefaultPreferredColorScheme };

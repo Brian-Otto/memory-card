@@ -56,6 +56,14 @@ export default function Home() {
   // waiting with rendering until client-side is ready
   if (!isClient) return null;
 
+  // setting of theme
+  const selectedTheme = localStorage.getItem("theme");
+  if (selectedTheme) {
+    document
+      .querySelector("html")
+      ?.setAttribute("data-theme", JSON.parse(selectedTheme));
+  }
+
   const handleCardClick = async (id: string) => {
     const userScored = !clickedCardIds.includes(id);
     const newScore = userScored ? score + 1 : 0;

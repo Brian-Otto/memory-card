@@ -1,3 +1,4 @@
+import { getDefaultPreferredColorScheme } from "../lib/utils";
 import DarkIcon from "./DarkIcon";
 import LightIcon from "./LightIcon";
 import { useLocalStorage } from "usehooks-ts";
@@ -5,12 +6,6 @@ import { useLocalStorage } from "usehooks-ts";
 type themeType = "light" | "dark";
 
 export default function ThemeToggle() {
-  const getDefaultPreferredColorScheme = (): themeType => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-
   const [theme, setTheme] = useLocalStorage("theme", () =>
     getDefaultPreferredColorScheme()
   );
