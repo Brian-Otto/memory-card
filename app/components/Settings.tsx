@@ -5,10 +5,15 @@ import SettingsIcon from "./SettingsIcon";
 
 type props = {
   onResetClick: () => void;
+  onResetHighscoreClick: () => void;
 };
 
-export default function Settings({ onResetClick }: props) {
+export default function Settings({
+  onResetClick,
+  onResetHighscoreClick,
+}: props) {
   const [settingsShown, setSettingsShown] = useState(false);
+
   return (
     <div className="relative flex items-center">
       <SettingsIcon
@@ -22,7 +27,14 @@ export default function Settings({ onResetClick }: props) {
             onClick={onResetClick}
             className="clickable p-4"
           >
-            Reset
+            Reset current game
+          </button>
+          <button
+            type="button"
+            onClick={onResetHighscoreClick}
+            className="clickable p-4"
+          >
+            Reset highscore
           </button>
         </div>
       )}

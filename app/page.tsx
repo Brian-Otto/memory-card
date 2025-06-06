@@ -95,9 +95,15 @@ export default function Home() {
 
   const reset = async () => {
     setLevel(1);
+    setScore(0);
+    setExp(0);
     setHighscore(highscore > score ? highscore : score);
     const newPokemons = await getPokemonsLoadingWrapper(initialCardAmount);
     setPokemons(newPokemons);
+  };
+
+  const resetHighscore = () => {
+    setHighscore(0);
   };
 
   return (
@@ -108,7 +114,7 @@ export default function Home() {
         highscore={highscore}
         filledPercentage={(exp / expNeededForLevelup) * 100}
       />
-      <Menu onReset={reset} />
+      <Menu onReset={reset} onResetHighscoreClick={resetHighscore} />
 
       {!isLoading ? (
         <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />

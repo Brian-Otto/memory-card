@@ -7,9 +7,10 @@ import ThemeToggle from "./ThemeToggle";
 
 type props = {
   onReset: () => void;
+  onResetHighscoreClick: () => void;
 };
 
-export default function Menu({ onReset }: props) {
+export default function Menu({ onReset, onResetHighscoreClick }: props) {
   const [menuShown, setMenuShown] = useState(false);
 
   return (
@@ -19,7 +20,10 @@ export default function Menu({ onReset }: props) {
           <button type="button" onClick={() => setMenuShown(false)}>
             <CloseIcon className="menu-icon-size clickable" />
           </button>
-          <Settings onResetClick={onReset} />
+          <Settings
+            onResetClick={onReset}
+            onResetHighscoreClick={onResetHighscoreClick}
+          />
           <ThemeToggle />
         </div>
       ) : (
