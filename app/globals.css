@@ -34,6 +34,16 @@ https://www.fontsquirrel.com/tools/webfont-generator
   }
 }
 
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

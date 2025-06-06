@@ -1,24 +1,32 @@
-import { useState } from "react";
 import DarkIcon from "./DarkIcon";
 import LightIcon from "./LightIcon";
+import { useLocalStorage } from "usehooks-ts";
+
+type themeType = "light" | "dark";
 
 export default function ThemeToggle() {
-  const getUserWantsDarkmode = () => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const getDefaultPreferredColorScheme = (): themeType => {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(() => getUserWantsDarkmode());
+  const [theme, setTheme] = useLocalStorage("theme", () =>
+    getDefaultPreferredColorScheme()
+  );
+
+  const onButtonClick = () => {
+    const newTheme: themeType = theme === "dark" ? "light" : "dark";
+
+    setTheme(newTheme);
+    document.querySelector("html")?.setAttribute("data-theme", newTheme);
+  };
 
   return (
     <>
-      <button type="button" onClick={() => setIsDarkMode(!isDarkMode)}>
-        {isDarkMode ? <LightIcon /> : <DarkIcon />}
+      <button type="button" onClick={onButtonClick}>
+        {theme === "dark" ? <DarkIcon /> : <LightIcon />}
       </button>
-      <p>
-        {window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "prefersDark"
-          : "noPrefersDark"}
-      </p>
     </>
   );
 }
