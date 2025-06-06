@@ -50,6 +50,10 @@ body {
   font-family: "pkmn_rbygscregular", Arial, Helvetica, sans-serif;
 }
 
+.background-transition {
+  transition: background 1s, color 1s;
+}
+
 .textbox {
   @apply border border-double border-8 rounded-xl p-3 pt-6;
   border-color: var(--foreground);

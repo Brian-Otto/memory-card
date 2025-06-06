@@ -11,6 +11,8 @@ export default function ThemeToggle() {
   );
 
   const onButtonClick = () => {
+    document.body.classList.add("background-transition");
+
     const newTheme: themeType = theme === "dark" ? "light" : "dark";
 
     setTheme(newTheme);
