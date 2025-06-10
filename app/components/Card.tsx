@@ -15,7 +15,7 @@ export default function Card({ text, imgUrl, onClick }: props) {
       <div className="relative w-25 h-25 md:w-50 md:h-50">
         <Image src={imgUrl} alt={`image of ${text}`} fill unoptimized />
       </div>
-      <p className="text-sm md:text-lg">{text}</p>
+      <p className="text-sm md:text-lg w-25 md:w-50 wrap-break-word">{text}</p>
     </div>
   );
 }
