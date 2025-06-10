@@ -16,7 +16,10 @@ export default function Settings({
 
   return (
     <div className="relative flex items-center">
-      <ResetIcon onClick={() => setSettingsShown(!settingsShown)} />
+      <button onClick={() => setSettingsShown(!settingsShown)}>
+        <ResetIcon />
+      </button>
+
       {settingsShown && (
         <div className="absolute top-full bg-background textbox mt-2 flex flex-wrap gap-4 z-1">
           <button

@@ -1,10 +1,6 @@
-type props = {
-  onClick: () => void;
-};
-
-export default function ResetIcon({ onClick }: props) {
+export default function ResetIcon() {
   return (
-    <button onClick={onClick}>
+    <>
       {/* Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools */}
       <svg
         fill="var(--foreground)"
@@ -73,6 +69,6 @@ export default function ResetIcon({ onClick }: props) {
           />
         </g>
       </svg>
-    </button>
+    </>
   );
 }
