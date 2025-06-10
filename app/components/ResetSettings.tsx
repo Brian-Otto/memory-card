@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SettingsIcon from "./SettingsIcon";
+import SettingsIcon from "./ResetIcon";
 
 type props = {
   onResetClick: () => void;

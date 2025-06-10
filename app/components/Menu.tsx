@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Settings from "./Settings";
+import Settings from "./ResetSettings";
 import CloseIcon from "./CloseIcon";
 import ThemeToggle from "./ThemeToggle";
 
