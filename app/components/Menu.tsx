@@ -16,7 +16,7 @@ export default function Menu({ onReset, onResetHighscoreClick }: props) {
   return (
     <>
       {menuShown ? (
-        <div className="textbox flex w-min gap-4">
+        <div className="textbox flex w-min gap-4 text-sm md:text-base">
           <button type="button" onClick={() => setMenuShown(false)}>
             <CloseIcon className="menu-icon-size clickable" />
           </button>
@@ -29,7 +29,7 @@ export default function Menu({ onReset, onResetHighscoreClick }: props) {
       ) : (
         <button
           type="button"
-          className="clickable p-3 w-min text-nowrap"
+          className="clickable p-3 w-min text-nowrap text-sm md:text-base"
           onClick={() => setMenuShown(true)}
         >
           Show menu

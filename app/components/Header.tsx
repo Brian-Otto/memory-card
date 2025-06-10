@@ -16,16 +16,16 @@ export default function Header({
   return (
     <div className="flex flex-wrap gap-4 justify-between">
       <div className="flex flex-col gap-4 textbox">
-        <h1 className="text-4xl">
+        <h1 className="text-2xl md:text-4xl">
           <span className="text-yellow-500 logo-outline">Pokémon</span> Memory
           Game
         </h1>
-        <p>
+        <p className="text-sm md:text-base">
           Get points by clicking on a Card, but don&apos;t click on any more
           than once!
         </p>
       </div>
-      <div className="flex flex-col justify-evenly text-right gap-2 textbox">
+      <div className="flex flex-col justify-evenly text-right gap-2 textbox text-sm md:text-base">
         <div className="flex justify-between">
           <p>HIGHSCORE:</p>
           <p className="w-20">{highscore}</p>
