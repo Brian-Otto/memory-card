@@ -21,7 +21,7 @@ export default function Settings({
         onClick={() => setSettingsShown(!settingsShown)}
       />
       {settingsShown && (
-        <div className="absolute top-full bg-background textbox mt-2 flex gap-4">
+        <div className="absolute top-full bg-background textbox mt-2 flex flex-wrap gap-4 z-1">
           <button
             type="button"
             onClick={onResetClick}
