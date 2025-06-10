@@ -1,6 +1,6 @@
 import { getDefaultPreferredColorScheme } from "../lib/utils";
-import DarkIcon from "./DarkIcon";
-import LightIcon from "./LightIcon";
+import DarkIcon from "./icons/DarkIcon";
+import LightIcon from "./icons/LightIcon";
 import { useLocalStorage } from "usehooks-ts";
 
 type themeType = "light" | "dark";

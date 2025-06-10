@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ResetSettings from "./ResetSettings";
-import CloseIcon from "./CloseIcon";
+import CloseIcon from "./icons/CloseIcon";
 import ThemeToggle from "./ThemeToggle";
 
 type props = {
