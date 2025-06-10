@@ -15,8 +15,8 @@ export default function Card({ text, imgUrl, onClick }: props) {
       <Image
         src={imgUrl}
         alt={`image of ${text}`}
-        width="250"
-        height="250"
+        width="200"
+        height="200"
         unoptimized
       />
       <p className="text-xl">{text}</p>
