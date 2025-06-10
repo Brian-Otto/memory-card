@@ -12,10 +12,10 @@ export default function Card({ text, imgUrl, onClick }: props) {
       className="flex flex-col text-center w-contain p-4 gap-4 clickable"
       onClick={onClick}
     >
-      <div className="relative w-40 h-40 md:w-50 md:h-50">
+      <div className="relative w-25 h-25 md:w-50 md:h-50">
         <Image src={imgUrl} alt={`image of ${text}`} fill unoptimized />
       </div>
-      <p className="text-xl">{text}</p>
+      <p className="text-xs md:text-xl">{text}</p>
     </div>
   );
 }

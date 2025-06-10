@@ -19,5 +19,5 @@ export default function Cards({ pokemons, onCardClick }: props) {
     );
   });
 
-  return <div className="flex flex-wrap gap-8">{cards}</div>;
+  return <div className="flex flex-wrap gap-4 md:gap-8">{cards}</div>;
 }
