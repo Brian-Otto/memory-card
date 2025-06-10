@@ -18,7 +18,7 @@ export default function Menu({ onReset, onResetHighscoreClick }: props) {
       {menuShown ? (
         <div className="textbox flex w-min gap-4 text-sm md:text-base">
           <button type="button" onClick={() => setMenuShown(false)}>
-            <CloseIcon className="menu-icon-size clickable" />
+            <CloseIcon />
           </button>
           <ResetSettings
             onResetClick={onReset}
