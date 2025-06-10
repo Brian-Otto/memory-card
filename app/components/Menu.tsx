@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Settings from "./ResetSettings";
+import ResetSettings from "./ResetSettings";
 import CloseIcon from "./CloseIcon";
 import ThemeToggle from "./ThemeToggle";
 
@@ -20,7 +20,7 @@ export default function Menu({ onReset, onResetHighscoreClick }: props) {
           <button type="button" onClick={() => setMenuShown(false)}>
             <CloseIcon className="menu-icon-size clickable" />
           </button>
-          <Settings
+          <ResetSettings
             onResetClick={onReset}
             onResetHighscoreClick={onResetHighscoreClick}
           />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SettingsIcon from "./ResetIcon";
+import ResetIcon from "./ResetIcon";
 
 type props = {
   onResetClick: () => void;
@@ -16,7 +16,7 @@ export default function Settings({
 
   return (
     <div className="relative flex items-center">
-      <SettingsIcon
+      <ResetIcon
         className="menu-icon-size clickable"
         onClick={() => setSettingsShown(!settingsShown)}
       />

@@ -3,7 +3,7 @@ type props = {
   onClick: () => void;
 };
 
-export default function SettingsIcon({ className, onClick }: props) {
+export default function ResetIcon({ className, onClick }: props) {
   return (
     <button onClick={onClick}>
       {/* Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools */}
