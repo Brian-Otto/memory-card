@@ -14,7 +14,7 @@ export default function Header({
   filledPercentage,
 }: props) {
   return (
-    <div className="flex justify-between">
+    <div className="flex flex-wrap gap-4 justify-between">
       <div className="flex flex-col gap-4 textbox">
         <h1 className="text-4xl">
           <span className="text-yellow-500 logo-outline">Pokémon</span> Memory
