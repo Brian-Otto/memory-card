@@ -9,16 +9,12 @@ type props = {
 export default function Card({ text, imgUrl, onClick }: props) {
   return (
     <div
-      className="flex flex-col text-center w-fit p-4 gap-4 clickable"
+      className="flex flex-col text-center w-contain p-4 gap-4 clickable"
       onClick={onClick}
     >
-      <Image
-        src={imgUrl}
-        alt={`image of ${text}`}
-        width="200"
-        height="200"
-        unoptimized
-      />
+      <div className="relative w-40 h-40 md:w-50 md:h-50">
+        <Image src={imgUrl} alt={`image of ${text}`} fill unoptimized />
+      </div>
       <p className="text-xl">{text}</p>
     </div>
   );
