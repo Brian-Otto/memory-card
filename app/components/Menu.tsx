@@ -4,13 +4,19 @@ import { useState } from "react";
 import ResetSettings from "./ResetSettings";
 import CloseIcon from "./icons/CloseIcon";
 import ThemeToggle from "./ThemeToggle";
+import ZenIcon from "./icons/ZenIcon";
 
 type props = {
   onReset: () => void;
   onResetHighscoreClick: () => void;
+  onZenClick: () => void;
 };
 
-export default function Menu({ onReset, onResetHighscoreClick }: props) {
+export default function Menu({
+  onReset,
+  onResetHighscoreClick,
+  onZenClick,
+}: props) {
   const [menuShown, setMenuShown] = useState(false);
 
   return (
@@ -25,6 +31,9 @@ export default function Menu({ onReset, onResetHighscoreClick }: props) {
             onResetHighscoreClick={onResetHighscoreClick}
           />
           <ThemeToggle />
+          <button type="button" onClick={onZenClick}>
+            <ZenIcon />
+          </button>
         </div>
       ) : (
         <button

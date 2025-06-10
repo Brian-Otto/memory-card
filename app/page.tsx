@@ -32,6 +32,7 @@ export default function Home() {
     getRandomizedArray<Pokemon>([])
   );
   const [isLoading, setIsLoading] = useState(true);
+  const [isZenMode, setIsZenMode] = useState(false);
 
   const getPokemonsLoadingWrapper = async (count: number) => {
     setIsLoading(true);
@@ -106,16 +107,25 @@ export default function Home() {
     setHighscore(0);
   };
 
+  const zenClick = () => {
+    setIsZenMode(!isZenMode);
+  };
+
   return (
     <div className="flex flex-col gap-4">
-      <Header
-        level={level}
-        score={score}
-        highscore={highscore}
-        filledPercentage={(exp / expNeededForLevelup) * 100}
+      {!isZenMode && (
+        <Header
+          level={level}
+          score={score}
+          highscore={highscore}
+          filledPercentage={(exp / expNeededForLevelup) * 100}
+        />
+      )}
+      <Menu
+        onReset={reset}
+        onResetHighscoreClick={resetHighscore}
+        onZenClick={zenClick}
       />
-      <Menu onReset={reset} onResetHighscoreClick={resetHighscore} />
-
       {!isLoading ? (
         <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
       ) : (
