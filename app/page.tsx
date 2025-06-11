@@ -3,7 +3,7 @@
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import { useEffect, useState } from "react";
-import { getRandomizedArray } from "./lib/utils";
+import { generation, getRandomizedArray } from "./lib/utils";
 import { getPokemons } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
 import Pokemon from "./lib/Pokemon";
@@ -33,10 +33,13 @@ export default function Home() {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [isZenMode, setIsZenMode] = useLocalStorage("isZenMode", false);
+  const [selectedGenerations, setSelectedGenerations] = useLocalStorage<
+    generation[]
+  >("selectedGenerations", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
   const getPokemonsLoadingWrapper = async (count: number) => {
     setIsLoading(true);
-    const newPokemons = await getPokemons(count, [1]);
+    const newPokemons = await getPokemons(count, selectedGenerations);
     setIsLoading(false);
     return newPokemons;
   };
