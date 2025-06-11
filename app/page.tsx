@@ -114,6 +114,18 @@ export default function Home() {
     setIsZenMode(!isZenMode);
   };
 
+  const regionClick = (generation: generation) => {
+    if (selectedGenerations.includes(generation)) {
+      setSelectedGenerations(
+        selectedGenerations.filter(
+          (selectedGeneration) => selectedGeneration !== generation
+        )
+      );
+    } else {
+      setSelectedGenerations([...selectedGenerations, generation]);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4">
       {!isZenMode && (
@@ -124,10 +136,12 @@ export default function Home() {
           filledPercentage={(exp / expNeededForLevelup) * 100}
         />
       )}
+      <p>{...selectedGenerations}</p>
       <Menu
         onReset={reset}
         onResetHighscoreClick={resetHighscore}
         onZenClick={zenClick}
+        onRegionClick={regionClick}
       />
       {!isLoading ? (
         <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />

@@ -5,19 +5,25 @@ import ResetSettings from "./ResetSettings";
 import CloseIcon from "./icons/CloseIcon";
 import ThemeToggle from "./ThemeToggle";
 import ZenIcon from "./icons/ZenIcon";
+import RegionIcon from "./icons/RegionIcon";
+import { generation } from "../lib/utils";
+import RegionSelectionButton from "./RegionSelectionButton";
 
 type props = {
   onReset: () => void;
   onResetHighscoreClick: () => void;
   onZenClick: () => void;
+  onRegionClick: (generation: generation) => void;
 };
 
 export default function Menu({
   onReset,
   onResetHighscoreClick,
   onZenClick,
+  onRegionClick,
 }: props) {
   const [menuShown, setMenuShown] = useState(false);
+  const [regionPopupShown, setRegionPopupShown] = useState(false);
 
   return (
     <>
@@ -30,6 +36,19 @@ export default function Menu({
             onResetClick={onReset}
             onResetHighscoreClick={onResetHighscoreClick}
           />
+          <button
+            type="button"
+            onClick={() => setRegionPopupShown(!regionPopupShown)}
+          >
+            <RegionIcon />
+          </button>
+          {regionPopupShown && (
+            <div className="popup textbox bg-background">
+              <RegionSelectionButton onClick={onRegionClick} generation={1}>
+                Kanto
+              </RegionSelectionButton>
+            </div>
+          )}
           <ThemeToggle />
           <button type="button" onClick={onZenClick}>
             <ZenIcon />
