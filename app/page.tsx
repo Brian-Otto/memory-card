@@ -32,7 +32,7 @@ export default function Home() {
     getRandomizedArray<Pokemon>([])
   );
   const [isLoading, setIsLoading] = useState(true);
-  const [isZenMode, setIsZenMode] = useState(false);
+  const [isZenMode, setIsZenMode] = useLocalStorage("isZenMode", false);
 
   const getPokemonsLoadingWrapper = async (count: number) => {
     setIsLoading(true);
