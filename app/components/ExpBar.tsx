@@ -7,7 +7,10 @@ export default function ExpBar({
 
   return (
     <div className="flex items-center justify-end border-x-8 border-b-2 border-foreground border-t-transparent h-3">
-      <div style={styleObject} className="bg-blue-500 h-1" />
+      <div
+        style={styleObject}
+        className="bg-blue-500 h-1 transition-[width] duration-700 ease-linear"
+      />
     </div>
   );
 }
