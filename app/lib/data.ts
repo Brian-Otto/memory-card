@@ -1,20 +1,49 @@
 import Pokemon from "./Pokemon";
 
-const getPokemons = async (quantity: number) => {
-  const from = 1;
-  const to = 151;
-  const alreadySelected: number[] = [];
+type generation = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+
+const getPokemons = async (
+  quantity: number,
+  wantedGenerations: generation[]
+) => {
+  const wantedIndexes = wantedGenerations.map((generation) => generation - 1);
+
+  // pokedex starting num and pokedex ending num as arrays inside array
+  const dexFromToArray = [
+    [1, 151],
+    [152, 251],
+    [252, 386],
+    [387, 493],
+    [494, 649],
+    [650, 721],
+    [722, 809],
+    [810, 905],
+    [906, 1025],
+  ];
+
+  const possibleDexNums: number[] = [];
+
+  // for every generation, push every possible pokedex num to array
+  for (let i = 0; i < wantedIndexes.length; i++) {
+    const from = dexFromToArray[wantedIndexes[i]][0];
+    const to = dexFromToArray[wantedIndexes[i]][1];
+
+    for (let j = from; j <= to; j++) {
+      possibleDexNums.push(j);
+    }
+  }
+
   const pokemons = [];
 
   for (let i = 0; i < quantity; i++) {
-    const dexNum = Math.floor(Math.random() * (to - from + 1)) + from;
+    // pick a random index
+    const indexOfDexNum = Math.floor(Math.random() * possibleDexNums.length);
+    // convert the index to the dexNum
+    const dexNum = possibleDexNums[indexOfDexNum];
+    // delete used dexNum to avoid repetition
+    possibleDexNums.splice(indexOfDexNum, 1);
 
-    if (alreadySelected.includes(dexNum)) {
-      i -= 1;
-      continue;
-    }
-
-    alreadySelected.push(dexNum);
+    // fetch pokemondata
     const fetchedPokemon = await fetchPokemon(dexNum);
     const id = await fetchedPokemon.id;
     const lowercaseName: string = await fetchedPokemon.name;

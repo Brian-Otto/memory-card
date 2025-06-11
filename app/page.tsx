@@ -36,7 +36,7 @@ export default function Home() {
 
   const getPokemonsLoadingWrapper = async (count: number) => {
     setIsLoading(true);
-    const newPokemons = await getPokemons(count);
+    const newPokemons = await getPokemons(count, [1]);
     setIsLoading(false);
     return newPokemons;
   };
