@@ -115,13 +115,16 @@ export default function Home() {
   };
 
   const regionClick = (generation: generation) => {
-    if (selectedGenerations.includes(generation)) {
+    if (
+      selectedGenerations.includes(generation) &&
+      selectedGenerations.length > 1
+    ) {
       setSelectedGenerations(
         selectedGenerations.filter(
           (selectedGeneration) => selectedGeneration !== generation
         )
       );
-    } else {
+    } else if (!selectedGenerations.includes(generation)) {
       setSelectedGenerations([...selectedGenerations, generation]);
     }
   };
