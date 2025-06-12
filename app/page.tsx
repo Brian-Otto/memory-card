@@ -2,7 +2,7 @@
 
 import Header from "./components/Header";
 import Cards from "./components/Cards";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { generation, getRandomizedArray } from "./lib/utils";
 import { getPokemons } from "./lib/data";
 import { useLocalStorage } from "usehooks-ts";
@@ -37,12 +37,15 @@ export default function Home() {
     generation[]
   >("selectedGenerations", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-  const getPokemonsLoadingWrapper = async (count: number) => {
-    setIsLoading(true);
-    const newPokemons = await getPokemons(count, selectedGenerations);
-    setIsLoading(false);
-    return newPokemons;
-  };
+  const getPokemonsLoadingWrapper = useCallback(
+    async (count: number) => {
+      setIsLoading(true);
+      const newPokemons = await getPokemons(count, selectedGenerations);
+      setIsLoading(false);
+      return newPokemons;
+    },
+    [selectedGenerations]
+  );
 
   // on fresh visit on site load initial cards
   useEffect(() => {
@@ -53,7 +56,7 @@ export default function Home() {
       };
       setFetchedPokemons(6);
     }
-  }, [setPokemons]);
+  }, [setPokemons, getPokemonsLoadingWrapper]);
 
   const expNeededForLevelup = initialCardAmount * level;
 
