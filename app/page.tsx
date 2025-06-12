@@ -139,7 +139,6 @@ export default function Home() {
           filledPercentage={(exp / expNeededForLevelup) * 100}
         />
       )}
-      <p>{...selectedGenerations}</p>
       <Menu
         onReset={reset}
         onResetHighscoreClick={resetHighscore}
