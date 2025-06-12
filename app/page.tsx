@@ -9,6 +9,7 @@ import { useLocalStorage } from "usehooks-ts";
 import Pokemon from "./lib/Pokemon";
 import Loading from "./Loading";
 import Menu from "./components/Menu";
+import LevelupPopup from "./components/LevelupPopup";
 
 export default function Home() {
   // waiting with rendering until client-side is ready
@@ -36,6 +37,7 @@ export default function Home() {
   const [selectedGenerations, setSelectedGenerations] = useLocalStorage<
     generation[]
   >("selectedGenerations", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [isLevelupPopupActive, setIsLevelupPopupActive] = useState(false);
 
   const getPokemonsLoadingWrapper = useCallback(
     async (count: number) => {
@@ -57,6 +59,14 @@ export default function Home() {
       setFetchedPokemons(6);
     }
   }, [setPokemons, getPokemonsLoadingWrapper]);
+
+  const showLevelupPopup = () => {
+    setIsLevelupPopupActive(true);
+    const timer = setTimeout(() => {
+      setIsLevelupPopupActive(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  };
 
   const expNeededForLevelup = initialCardAmount * level;
 
@@ -81,6 +91,7 @@ export default function Home() {
     if (userScored) {
       // Levelup
       if (newExp === expNeededForLevelup) {
+        showLevelupPopup();
         const newLevel = level + 1;
         setLevel(newLevel);
         newExp = 0;
@@ -154,6 +165,7 @@ export default function Home() {
       ) : (
         <Loading />
       )}
+      {isLevelupPopupActive && <LevelupPopup newLevel={level} />}
     </div>
   );
 }

@@ -103,3 +103,7 @@ body {
 .not-selected-region {
   opacity: 30%;
 }
+
+.big-whitespace {
+  word-spacing: 20px;
+}
