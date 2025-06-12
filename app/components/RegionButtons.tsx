@@ -20,7 +20,10 @@ export default function RegionButtons({ onClick, selectedGenerations }: props) {
   ];
 
   return (
-    <div className="popup textbox bg-background flex flex-col gap-4">
+    <div
+      id="regionbuttons"
+      className="popup textbox bg-background flex flex-col gap-4"
+    >
       {regions.map((region) => {
         const isSelected = selectedGenerations.includes(region[0]);
 

@@ -27,6 +27,16 @@ export default function Menu({
   const [menuShown, setMenuShown] = useState(false);
   const [regionPopupShown, setRegionPopupShown] = useState(false);
 
+  if (regionPopupShown) {
+    document.addEventListener("mouseup", function (e) {
+      const regionPopup = document.getElementById("regionbuttons");
+      const target = e.target as Node;
+      if (regionPopup && !regionPopup.contains(target)) {
+        setRegionPopupShown(false);
+      }
+    });
+  }
+
   return (
     <>
       {menuShown ? (
