@@ -10,6 +10,7 @@ import Pokemon from "./lib/Pokemon";
 import Loading from "./Loading";
 import Menu from "./components/Menu";
 import LevelupPopup from "./components/LevelupPopup";
+import BlackoutPopup from "./components/BlackoutPopup";
 
 export default function Home() {
   // waiting with rendering until client-side is ready
@@ -38,6 +39,7 @@ export default function Home() {
     generation[]
   >("selectedGenerations", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [isLevelupPopupActive, setIsLevelupPopupActive] = useState(false);
+  const [isBlackoutPopupActive, setIsBlackoutPopupActive] = useState(false);
 
   const getPokemonsLoadingWrapper = useCallback(
     async (count: number) => {
@@ -64,6 +66,14 @@ export default function Home() {
     setIsLevelupPopupActive(true);
     const timer = setTimeout(() => {
       setIsLevelupPopupActive(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  };
+
+  const showBlackoutPopup = () => {
+    setIsBlackoutPopupActive(true);
+    const timer = setTimeout(() => {
+      setIsBlackoutPopupActive(false);
     }, 2000);
     return () => clearTimeout(timer);
   };
@@ -103,6 +113,7 @@ export default function Home() {
       setPokemons(getRandomizedArray([...newPokemons]));
     } else {
       // if player loses
+      showBlackoutPopup();
       reset();
     }
 
@@ -166,6 +177,7 @@ export default function Home() {
         <Loading />
       )}
       {isLevelupPopupActive && <LevelupPopup newLevel={level} />}
+      {isBlackoutPopupActive && <BlackoutPopup />}
     </div>
   );
 }
