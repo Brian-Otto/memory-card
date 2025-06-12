@@ -142,6 +142,7 @@ export default function Home() {
         onResetHighscoreClick={resetHighscore}
         onZenClick={zenClick}
         onRegionClick={regionClick}
+        selectedGenerations={selectedGenerations}
       />
       {!isLoading ? (
         <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
