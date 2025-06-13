@@ -1,4 +1,5 @@
 import { useState } from "react";
+import OkButton from "./OkButton";
 
 type props = {
   onSubmit: (username: string) => void;
@@ -20,13 +21,7 @@ export default function RenameBox({ onSubmit }: props) {
         className="clickable p-2 max-w-full w-3xs"
         onChange={(e) => setNewUsername(e.target.value)}
       />
-      <button
-        type="button"
-        className="clickable py-2 px-8 w-min wrap self-end"
-        onClick={() => handleOkClick()}
-      >
-        OK
-      </button>
+      <OkButton onClick={handleOkClick} />
     </div>
   );
 }
