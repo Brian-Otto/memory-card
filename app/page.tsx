@@ -40,6 +40,7 @@ export default function Home() {
   >("selectedGenerations", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [isLevelupPopupActive, setIsLevelupPopupActive] = useState(false);
   const [isBlackoutPopupActive, setIsBlackoutPopupActive] = useState(false);
+  const [username, setUsername] = useLocalStorage("username", "you");
 
   const getPokemonsLoadingWrapper = useCallback(
     async (count: number) => {
@@ -154,6 +155,10 @@ export default function Home() {
     }
   };
 
+  const rename = (newUsername: string) => {
+    setUsername(newUsername);
+  };
+
   return (
     <div className="flex flex-col gap-4">
       {!isZenMode && (
@@ -170,14 +175,17 @@ export default function Home() {
         onZenClick={zenClick}
         onRegionClick={regionClick}
         selectedGenerations={selectedGenerations}
+        onRename={(newUsername) => rename(newUsername)}
       />
       {!isLoading ? (
         <Cards onCardClick={(id) => handleCardClick(id)} pokemons={pokemons} />
       ) : (
         <Loading />
       )}
-      {isLevelupPopupActive && <LevelupPopup newLevel={level} />}
-      {isBlackoutPopupActive && <BlackoutPopup />}
+      {isLevelupPopupActive && (
+        <LevelupPopup newLevel={level} username={username} />
+      )}
+      {isBlackoutPopupActive && <BlackoutPopup username={username} />}
     </div>
   );
 }

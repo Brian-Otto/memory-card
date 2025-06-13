@@ -8,6 +8,8 @@ import ZenIcon from "./icons/ZenIcon";
 import RegionIcon from "./icons/RegionIcon";
 import { generation } from "../lib/utils";
 import RegionButtons from "./RegionButtons";
+import RenameIcon from "./icons/RenameIcon";
+import RenameBox from "./RenameBox";
 
 type props = {
   onReset: () => void;
@@ -15,6 +17,7 @@ type props = {
   onZenClick: () => void;
   onRegionClick: (generation: generation) => void;
   selectedGenerations: generation[];
+  onRename: (username: string) => void;
 };
 
 export default function Menu({
@@ -23,9 +26,11 @@ export default function Menu({
   onZenClick,
   onRegionClick,
   selectedGenerations,
+  onRename,
 }: props) {
   const [menuShown, setMenuShown] = useState(false);
   const [regionPopupShown, setRegionPopupShown] = useState(false);
+  const [renameShown, setRenameShown] = useState(false);
 
   if (regionPopupShown) {
     document.addEventListener("mouseup", function (e) {
@@ -36,6 +41,11 @@ export default function Menu({
       }
     });
   }
+
+  const handleRename = (newUsername: string) => {
+    setRenameShown(false);
+    onRename(newUsername);
+  };
 
   return (
     <>
@@ -64,6 +74,12 @@ export default function Menu({
           <button type="button" onClick={onZenClick}>
             <ZenIcon />
           </button>
+          <button type="button" onClick={() => setRenameShown(!renameShown)}>
+            <RenameIcon />
+          </button>
+          {renameShown && (
+            <RenameBox onSubmit={(newUsername) => handleRename(newUsername)} />
+          )}
         </div>
       ) : (
         <button
