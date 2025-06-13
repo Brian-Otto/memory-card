@@ -32,15 +32,9 @@ export default function Menu({
   const [regionPopupShown, setRegionPopupShown] = useState(false);
   const [renameShown, setRenameShown] = useState(false);
 
-  if (regionPopupShown) {
-    document.addEventListener("mouseup", function (e) {
-      const regionPopup = document.getElementById("regionbuttons");
-      const target = e.target as Node;
-      if (regionPopup && !regionPopup.contains(target)) {
-        setRegionPopupShown(false);
-      }
-    });
-  }
+  const handleRegionSubmit = () => {
+    setRegionPopupShown(false);
+  };
 
   const handleRename = (newUsername: string) => {
     setRenameShown(false);
@@ -68,6 +62,7 @@ export default function Menu({
             <RegionButtons
               onClick={onRegionClick}
               selectedGenerations={selectedGenerations}
+              onSubmit={handleRegionSubmit}
             />
           )}
           <ThemeToggle />
