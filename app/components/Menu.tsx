@@ -41,6 +41,21 @@ export default function Menu({
     onRename(newUsername);
   };
 
+  const closeAll = () => {
+    setRegionPopupShown(false);
+    setRenameShown(false);
+  };
+
+  const showRegion = () => {
+    closeAll();
+    setRegionPopupShown(true);
+  };
+
+  const showRename = () => {
+    closeAll();
+    setRenameShown(true);
+  };
+
   return (
     <>
       {menuShown ? (
@@ -52,10 +67,7 @@ export default function Menu({
             onResetClick={onReset}
             onResetHighscoreClick={onResetHighscoreClick}
           />
-          <button
-            type="button"
-            onClick={() => setRegionPopupShown(!regionPopupShown)}
-          >
+          <button type="button" onClick={showRegion}>
             <RegionIcon />
           </button>
           {regionPopupShown && (
@@ -69,7 +81,7 @@ export default function Menu({
           <button type="button" onClick={onZenClick}>
             <ZenIcon />
           </button>
-          <button type="button" onClick={() => setRenameShown(!renameShown)}>
+          <button type="button" onClick={showRename}>
             <RenameIcon />
           </button>
           {renameShown && (
