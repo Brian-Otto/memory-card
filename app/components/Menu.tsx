@@ -40,7 +40,7 @@ export default function Menu({
   return (
     <>
       {menuShown ? (
-        <div className="textbox flex w-min gap-4 text-sm md:text-base">
+        <div className="textbox flex-row flex-wrap flex gap-4 text-sm md:text-base">
           <button type="button" onClick={() => setMenuShown(false)}>
             <CloseIcon />
           </button>
